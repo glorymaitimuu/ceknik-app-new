@@ -9,30 +9,47 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-6">
+<body
+    class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4 sm:p-6">
 
-    <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8 space-y-6">
+    <div
+        class="w-full max-w-xl bg-white rounded-2xl shadow-xl p-5 sm:p-8 space-y-5 sm:space-y-6">
 
+        <!-- Header -->
         <div class="text-center">
-            <h1 class="text-2xl font-bold text-slate-800">Cek Peserta BPJS</h1>
-            <p class="text-sm text-slate-500">Masukkan NIK untuk melihat data</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-slate-800">
+                Cek Peserta BPJS
+            </h1>
+            <p class="text-sm text-slate-500">
+                Masukkan NIK untuk melihat data
+            </p>
         </div>
 
+        <!-- Input -->
         <input id="nik" type="text" maxlength="16" placeholder="Masukkan NIK"
-            class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500">
+            class="w-full px-4 py-3 text-sm sm:text-base border rounded-xl focus:ring-2 focus:ring-indigo-500">
 
+        <!-- Button -->
         <button onclick="cekData()"
-            class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
+            class="w-full py-3 text-sm sm:text-base rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
             Cari Data
         </button>
 
-        <p id="loading" class="mt-3 text-gray-500 hidden">🔍 Memeriksa data...</p>
-        <p id="error" class="mt-3 text-red-600 hidden"></p>
+        <!-- Loading & Error -->
+        <p id="loading" class="mt-2 text-sm text-gray-500 hidden">
+            🔍 Memeriksa data...
+        </p>
+        <p id="error" class="mt-2 text-sm text-red-600 hidden"></p>
 
-        <div id="result-card" class="hidden bg-slate-50 border rounded-xl p-6 space-y-4">
-            <h2 class="font-semibold text-slate-800 text-lg">Detail Kepesertaan BPJS</h2>
+        <!-- Result Card -->
+        <div id="result-card"
+            class="hidden bg-slate-50 border rounded-xl p-4 sm:p-6 space-y-4">
 
-            <div class="grid grid-cols-2 gap-4 text-sm">
+            <h2 class="font-semibold text-slate-800 text-base sm:text-lg">
+                Detail Kepesertaan BPJS
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
                 <div>
                     <span class="text-slate-500">NIK</span>
                     <p id="r-nik" class="font-medium"></p>
@@ -64,12 +81,12 @@
                 </div>
             </div>
 
-            <div id="status" class="mt-4 px-4 py-3 rounded-xl text-sm font-semibold text-center">
+            <!-- Status -->
+            <div id="status"
+                class="mt-4 px-3 sm:px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-center">
             </div>
         </div>
 
-
-        <div id="error" class="hidden text-center text-red-600 text-sm font-semibold"></div>
     </div>
 
     <script>
@@ -87,12 +104,8 @@
             try {
                 const res = await fetch('/api/cek-peserta-bpjs', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        nik
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nik })
                 });
 
                 const json = await res.json();
@@ -106,7 +119,6 @@
 
                 const d = json.data;
 
-                // isi data
                 document.getElementById('r-nik').innerText = d.nik;
                 document.getElementById('r-kpj').innerText = d.kpj ?? '-';
                 document.getElementById('r-nama').innerText = d.nama;
@@ -114,18 +126,17 @@
                 document.getElementById('r-mulai').innerText = formatTanggal(d.tgl_kepesertaan);
                 document.getElementById('r-akhir').innerText = formatTanggal(d.tgl_berakhir);
 
-                // status kepesertaan
                 const today = new Date();
                 const endDate = new Date(d.tgl_berakhir);
 
                 if (endDate < today) {
                     statusEl.className =
-                        'mt-4 px-4 py-3 rounded-xl text-sm font-semibold text-center bg-red-100 text-red-700';
+                        'mt-4 px-3 sm:px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-center bg-red-100 text-red-700';
                     statusEl.innerText =
                         '❌ Kepesertaan Sudah Tidak Aktif. Silahkan Daftar Lagi!';
                 } else {
                     statusEl.className =
-                        'mt-4 px-4 py-3 rounded-xl text-sm font-semibold text-center bg-green-100 text-green-700';
+                        'mt-4 px-3 sm:px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-center bg-green-100 text-green-700';
                     statusEl.innerText =
                         '✅ Kepesertaan Masih Aktif';
                 }
@@ -147,15 +158,6 @@
                 month: 'long',
                 year: 'numeric'
             });
-        }
-
-
-        function setBadge(id, active) {
-            const el = document.getElementById(id);
-            el.className = active ?
-                'px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold' :
-                'px-3 py-1 rounded-full bg-slate-200 text-slate-500 text-xs font-semibold';
-            el.innerText = id.toUpperCase();
         }
     </script>
 
