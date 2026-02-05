@@ -25,6 +25,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->brandName('BPJS TK TIMIKA')
             ->id('admin')
             ->path('admin')
             ->login()
