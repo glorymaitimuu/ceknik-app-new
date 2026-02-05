@@ -5,85 +5,99 @@
     <meta charset="UTF-8">
     <title>Cek Peserta BPJS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body
-    class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4 sm:p-6">
+    class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800
+           flex items-end sm:items-center justify-center
+           px-4 pb-10 sm:pb-0">
 
+    <!-- CARD -->
     <div
-        class="w-full max-w-xl bg-white rounded-2xl shadow-xl p-5 sm:p-8 space-y-5 sm:space-y-6">
+        class="w-full max-w-none sm:max-w-xl
+               min-h-[60vh] sm:min-h-0
+               bg-white rounded-2xl shadow-2xl
+               p-8 space-y-8">
 
         <!-- Header -->
-        <div class="text-center">
-            <h1 class="text-xl sm:text-2xl font-bold text-slate-800">
+        <div class="text-center space-y-2">
+            <h1 class="text-3xl font-bold text-slate-800">
                 Cek Peserta BPJS
             </h1>
-            <p class="text-sm text-slate-500">
+            <p class="text-base text-slate-500">
                 Masukkan NIK untuk melihat data
             </p>
         </div>
 
         <!-- Input -->
-        <input id="nik" type="text" maxlength="16" placeholder="Masukkan NIK"
-            class="w-full px-4 py-3 text-sm sm:text-base border rounded-xl focus:ring-2 focus:ring-indigo-500">
+        <input
+            id="nik"
+            type="text"
+            maxlength="16"
+            placeholder="Masukkan NIK"
+            class="w-full px-5 py-5 text-lg border rounded-xl
+                   focus:ring-2 focus:ring-indigo-500
+                   focus:outline-none">
 
         <!-- Button -->
-        <button onclick="cekData()"
-            class="w-full py-3 text-sm sm:text-base rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
+        <button
+            onclick="cekData()"
+            class="w-full py-5 text-lg rounded-xl
+                   bg-indigo-600 text-white font-semibold
+                   hover:bg-indigo-700 transition
+                   active:scale-[0.98]">
             Cari Data
         </button>
 
         <!-- Loading & Error -->
-        <p id="loading" class="mt-2 text-sm text-gray-500 hidden">
+        <p id="loading" class="text-center text-base text-gray-500 hidden">
             🔍 Memeriksa data...
         </p>
-        <p id="error" class="mt-2 text-sm text-red-600 hidden"></p>
+        <p id="error" class="text-center text-base text-red-600 hidden"></p>
 
-        <!-- Result Card -->
+        <!-- RESULT -->
         <div id="result-card"
-            class="hidden bg-slate-50 border rounded-xl p-4 sm:p-6 space-y-4">
+            class="hidden bg-slate-50 border rounded-xl p-6 space-y-6">
 
-            <h2 class="font-semibold text-slate-800 text-base sm:text-lg">
-                Detail Kepesertaan BPJS
+            <h2 class="font-semibold text-slate-800 text-xl text-center">
+                Detail Kepesertaan
             </h2>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
+            <div class="grid grid-cols-1 gap-5 text-base">
                 <div>
                     <span class="text-slate-500">NIK</span>
-                    <p id="r-nik" class="font-medium"></p>
+                    <p id="r-nik" class="font-semibold"></p>
                 </div>
 
                 <div>
                     <span class="text-slate-500">KPJ</span>
-                    <p id="r-kpj" class="font-medium"></p>
+                    <p id="r-kpj" class="font-semibold"></p>
                 </div>
 
                 <div>
                     <span class="text-slate-500">Nama</span>
-                    <p id="r-nama" class="font-medium"></p>
+                    <p id="r-nama" class="font-semibold"></p>
                 </div>
 
                 <div>
                     <span class="text-slate-500">Tanggal Lahir</span>
-                    <p id="r-lahir" class="font-medium"></p>
+                    <p id="r-lahir" class="font-semibold"></p>
                 </div>
 
                 <div>
                     <span class="text-slate-500">Tgl Kepesertaan</span>
-                    <p id="r-mulai" class="font-medium"></p>
+                    <p id="r-mulai" class="font-semibold"></p>
                 </div>
 
                 <div>
                     <span class="text-slate-500">Tgl Berakhir</span>
-                    <p id="r-akhir" class="font-medium"></p>
+                    <p id="r-akhir" class="font-semibold"></p>
                 </div>
             </div>
 
-            <!-- Status -->
-            <div id="status"
-                class="mt-4 px-3 sm:px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-center">
+            <div
+                id="status"
+                class="px-5 py-5 rounded-xl text-base font-semibold text-center">
             </div>
         </div>
 
@@ -131,19 +145,19 @@
 
                 if (endDate < today) {
                     statusEl.className =
-                        'mt-4 px-3 sm:px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-center bg-red-100 text-red-700';
+                        'px-4 py-4 rounded-xl text-sm font-semibold text-center bg-red-100 text-red-700';
                     statusEl.innerText =
                         '❌ Kepesertaan Sudah Tidak Aktif. Silahkan Daftar Lagi!';
                 } else {
                     statusEl.className =
-                        'mt-4 px-3 sm:px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-center bg-green-100 text-green-700';
+                        'px-4 py-4 rounded-xl text-sm font-semibold text-center bg-green-100 text-green-700';
                     statusEl.innerText =
                         '✅ Kepesertaan Masih Aktif';
                 }
 
                 card.classList.remove('hidden');
 
-            } catch (e) {
+            } catch {
                 loading.classList.add('hidden');
                 error.innerText = 'Terjadi kesalahan sistem';
                 error.classList.remove('hidden');
@@ -152,8 +166,7 @@
 
         function formatTanggal(dateStr) {
             if (!dateStr) return '-';
-            const d = new Date(dateStr);
-            return d.toLocaleDateString('id-ID', {
+            return new Date(dateStr).toLocaleDateString('id-ID', {
                 day: '2-digit',
                 month: 'long',
                 year: 'numeric'
