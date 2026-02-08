@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Cek Peserta BPJS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body
-    class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800
+    class="lg:min-h-screen bg-gradient-to-br from-slate-900 to-slate-800
            flex items-end sm:items-center justify-center
-           px-4 pb-10 sm:pb-0">
+           px-3 py-6">
 
     <!-- CARD -->
     <div
-        class="w-full max-w-none sm:max-w-xl
-               min-h-[60vh] sm:min-h-0
+        class="w-full max-w-lg
                bg-white rounded-2xl shadow-2xl
-               p-8 space-y-8">
+               p-6 sm:p-8 space-y-6">
 
         <!-- Header -->
-        <div class="text-center space-y-2">
-            <h1 class="text-3xl font-bold text-slate-800">
+        <div class="text-center space-y-1">
+            <h1 class="text-2xl sm:text-3xl font-bold text-slate-800">
                 Cek Peserta BPJS
             </h1>
-            <p class="text-base text-slate-500">
+            <p class="text-sm sm:text-base text-slate-500">
                 Masukkan NIK untuk melihat data
             </p>
         </div>
@@ -35,14 +35,13 @@
             type="text"
             maxlength="16"
             placeholder="Masukkan NIK"
-            class="w-full px-5 py-5 text-lg border rounded-xl
-                   focus:ring-2 focus:ring-indigo-500
-                   focus:outline-none">
+            class="w-full px-4 py-4 text-base sm:text-lg border rounded-xl
+                   focus:ring-2 focus:ring-indigo-500 focus:outline-none">
 
         <!-- Button -->
         <button
             onclick="cekData()"
-            class="w-full py-5 text-lg rounded-xl
+            class="w-full py-4 text-base sm:text-lg rounded-xl
                    bg-indigo-600 text-white font-semibold
                    hover:bg-indigo-700 transition
                    active:scale-[0.98]">
@@ -50,29 +49,29 @@
         </button>
 
         <!-- Loading & Error -->
-        <p id="loading" class="text-center text-base text-gray-500 hidden">
+        <p id="loading" class="text-center text-sm text-gray-500 hidden">
             🔍 Memeriksa data...
         </p>
-        <p id="error" class="text-center text-base text-red-600 hidden"></p>
+        <p id="error" class="text-center text-sm text-red-600 hidden"></p>
 
         <!-- RESULT -->
         <div id="result-card"
-            class="hidden bg-slate-50 border rounded-xl p-6 space-y-6">
+            class="hidden bg-slate-50 border rounded-xl p-5 space-y-5">
 
-            <h2 class="font-semibold text-slate-800 text-xl text-center">
+            <h2 class="font-semibold text-slate-800 text-lg text-center">
                 Detail Kepesertaan
             </h2>
 
-            <div class="grid grid-cols-1 gap-5 text-base">
+            <div class="grid grid-cols-1 gap-4 text-sm">
                 <div>
                     <span class="text-slate-500">NIK</span>
                     <p id="r-nik" class="font-semibold"></p>
                 </div>
 
-                <div>
+                {{-- <div>
                     <span class="text-slate-500">KPJ</span>
                     <p id="r-kpj" class="font-semibold"></p>
-                </div>
+                </div> --}}
 
                 <div>
                     <span class="text-slate-500">Nama</span>
@@ -93,11 +92,17 @@
                     <span class="text-slate-500">Tgl Berakhir</span>
                     <p id="r-akhir" class="font-semibold"></p>
                 </div>
+
+                <!-- PROGRAM -->
+                <div>
+                    <span class="text-slate-500">Program Diikuti</span>
+                    <div id="programs" class="flex flex-wrap gap-2 mt-2"></div>
+                </div>
             </div>
 
             <div
                 id="status"
-                class="px-5 py-5 rounded-xl text-base font-semibold text-center">
+                class="rounded-xl text-sm font-semibold text-center space-y-2 p-4">
             </div>
         </div>
 
@@ -110,6 +115,13 @@
             const error = document.getElementById('error');
             const card = document.getElementById('result-card');
             const statusEl = document.getElementById('status');
+            const programEl = document.getElementById('programs');
+
+            const link = document.createElement('a');
+            link.href = 'https://bpjsketenagakerjaan.go.id/bpu';
+            link.target = '_blank';
+            link.className = 'underline font-semibold';
+            link.textContent = 'bpjsketenagakerjaan.go.id/bpu';
 
             error.classList.add('hidden');
             card.classList.add('hidden');
@@ -126,33 +138,60 @@
                 loading.classList.add('hidden');
 
                 if (!res.ok) {
-                    error.innerText = json.message ?? 'Data tidak ditemukan';
+                    error.innerText =
+                        'Anda tidak terdaftar sebagai peserta pekerja rentan Kabupaten Mimika';
                     error.classList.remove('hidden');
                     return;
                 }
 
                 const d = json.data;
 
+                console.log(d);
+
                 document.getElementById('r-nik').innerText = d.nik;
-                document.getElementById('r-kpj').innerText = d.kpj ?? '-';
+                // document.getElementById('r-kpj').innerText = d.kpj ?? '-';
                 document.getElementById('r-nama').innerText = d.nama;
                 document.getElementById('r-lahir').innerText = formatTanggal(d.tgl_lahir);
                 document.getElementById('r-mulai').innerText = formatTanggal(d.tgl_kepesertaan);
                 document.getElementById('r-akhir').innerText = formatTanggal(d.tgl_berakhir);
 
+                // PROGRAM
+                programEl.innerHTML = '';
+                if (d.program) {
+                    Object.entries(d.program).forEach(([key, val]) => {
+                        if (val) {
+                            const badge = document.createElement('span');
+                            badge.className =
+                                'px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold';
+                            badge.textContent = key.toUpperCase();
+                            programEl.appendChild(badge);
+                        }
+                    });
+                }
+
                 const today = new Date();
                 const endDate = new Date(d.tgl_berakhir);
 
+                statusEl.innerHTML = '';
+
                 if (endDate < today) {
                     statusEl.className =
-                        'px-4 py-4 rounded-xl text-sm font-semibold text-center bg-red-100 text-red-700';
-                    statusEl.innerText =
-                        '❌ Kepesertaan Sudah Tidak Aktif. Silahkan Daftar Lagi!';
+                        'rounded-xl text-sm font-semibold text-center p-4 bg-red-100 text-red-700';
+
+                    statusEl.innerHTML =
+                        '❌ Anda sudah tidak terdaftar sebagai pekerja rentan, silahkan daftar di ';
+                    statusEl.appendChild(link);
+                    statusEl.innerHTML +=
+                        ' atau mengunjungi kantor kami di Jl. Cendrawasih SP2';
                 } else {
                     statusEl.className =
-                        'px-4 py-4 rounded-xl text-sm font-semibold text-center bg-green-100 text-green-700';
-                    statusEl.innerText =
-                        '✅ Kepesertaan Masih Aktif';
+                        'rounded-xl text-sm font-semibold text-center p-4 bg-green-100 text-green-700';
+
+                    statusEl.innerHTML =
+                        '✅ Kepesertaan Masih Aktif<br>' +
+                        '<span class="text-xs font-normal">Berlaku sampai: ' +
+                        formatTanggal(d.tgl_berakhir) +
+                        '</span>';
                 }
 
                 card.classList.remove('hidden');

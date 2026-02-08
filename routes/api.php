@@ -22,6 +22,12 @@ Route::post('/cek-peserta-bpjs', function (Request $request) {
         ], 404);
     }
 
+    $peserta["program"] = [
+        "jkk" => $peserta["jkk"],
+        "jkm" => $peserta["jkm"],
+        "jht" => $peserta["jht"]
+    ];
+
     return response()->json([
         'status' => true,
         'data' => $peserta

@@ -22,7 +22,6 @@ class PesertaBpjsForm
                                 ->label('NIK')
                                 ->required()
                                 ->length(16)
-                                ->numeric()
                                 ->unique(ignoreRecord: true),
 
                             TextInput::make('kpj')

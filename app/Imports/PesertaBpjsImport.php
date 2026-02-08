@@ -22,7 +22,7 @@ class PesertaBpjsImport implements ToModel, WithHeadingRow
         if (empty($row['nik'])) {
             return null;
         }
-
+        
         return PesertaBpjs::updateOrCreate(
             ['nik' => $row['nik']],
             [
@@ -32,8 +32,8 @@ class PesertaBpjsImport implements ToModel, WithHeadingRow
                 'no_handphone' => $row['no_handphone'] ?? null,
 
                 'jht' => (int) ($row['program'] ?? 0),
-                'jkk' => (int) ($row[7] ?? 0),
-                'jkm' => (int) ($row[8] ?? 0),
+                'jkk' => (int) ($row[9] ?? 0),
+                'jkm' => (int) ($row[10] ?? 0),
 
                 'jenis_pekerjaan' => $row['jenis_pekerjaan'] ?? null,
                 'tgl_kepesertaan' => $this->parseDate($row['tgl_kepesertaan'] ?? null),

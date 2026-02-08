@@ -10,14 +10,21 @@ Route::get('/', function () {
 
 Route::post('/cek-peserta-bpjs', function (Request $request) {
     $peserta = PesertaBpjs::where('nik', $request->nik)->first();
-    dd($peserta);
 
-    if (! $peserta) {
+    if (!$peserta) {
         return response()->json([
             'status' => false,
             'message' => 'Data peserta tidak ditemukan',
         ], 404);
     }
+
+    $peserta["program"] = [
+        "jkk" => $peserta["jkk"],
+        "jkm" => $peserta["jkm"],
+        "jht" => $peserta["jht"]
+    ];
+
+    dd($peserta);
 
     return response()->json([
         'status' => true,
@@ -25,4 +32,4 @@ Route::post('/cek-peserta-bpjs', function (Request $request) {
     ]);
 })->name('cek.peserta.bpjs');
 
-Route::view('/cek-bpjs', 'cek-bpjs');
+// Route::view('/cek-bpjs', 'cek-bpjs');
