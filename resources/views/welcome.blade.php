@@ -83,7 +83,7 @@
                     <p id="r-lahir" class="font-semibold"></p>
                 </div>
 
-                <div>
+                {{-- <div>
                     <span class="text-slate-500">Tgl Kepesertaan</span>
                     <p id="r-mulai" class="font-semibold"></p>
                 </div>
@@ -91,7 +91,7 @@
                 <div>
                     <span class="text-slate-500">Tgl Berakhir</span>
                     <p id="r-akhir" class="font-semibold"></p>
-                </div>
+                </div> --}}
 
                 <!-- PROGRAM -->
                 <div>
@@ -146,14 +146,12 @@
 
                 const d = json.data;
 
-                console.log(d);
-
                 document.getElementById('r-nik').innerText = d.nik;
                 // document.getElementById('r-kpj').innerText = d.kpj ?? '-';
                 document.getElementById('r-nama').innerText = d.nama;
                 document.getElementById('r-lahir').innerText = formatTanggal(d.tgl_lahir);
-                document.getElementById('r-mulai').innerText = formatTanggal(d.tgl_kepesertaan);
-                document.getElementById('r-akhir').innerText = formatTanggal(d.tgl_berakhir);
+                // document.getElementById('r-mulai').innerText = formatTanggal(d.tgl_kepesertaan);
+                // document.getElementById('r-akhir').innerText = formatTanggal(d.tgl_berakhir);
 
                 // PROGRAM
                 programEl.innerHTML = '';
