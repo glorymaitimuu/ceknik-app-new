@@ -37,8 +37,9 @@
                 loading.classList.add('hidden');
 
                 if (!res.ok) {
-                    error.innerText =
-                        'Anda tidak terdaftar sebagai peserta pekerja rentan Kabupaten Mimika';
+                    error.innerHTML =
+                        'Anda tidak terdaftar sebagai peserta pekerja rentan Kabupaten Mimika. <br><br>' +
+                        '<a href="/pengajuan" class="inline-block mt-2 px-6 py-2 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition">Daftar Pengajuan Baru</a>';
                     error.classList.remove('hidden');
                     return;
                 }
@@ -76,10 +77,9 @@
                         'rounded-xl text-sm font-semibold text-center p-4 bg-red-100 text-red-700';
 
                     statusEl.innerHTML =
-                        '❌ Anda sudah tidak terdaftar sebagai pekerja rentan, silahkan daftar di ';
-                    statusEl.appendChild(link);
-                    statusEl.innerHTML +=
-                        ' atau mengunjungi kantor kami di Jl. Cendrawasih SP2';
+                        '❌ Status Kepesertaan: <b>NON-AKTIF (EXPIRED)</b><br><br>' +
+                        'Silakan lakukan pengajuan pendaftaran ulang melalui link di bawah ini:<br>' +
+                        '<a href="/pengajuan" class="inline-block mt-3 px-6 py-2 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 transition">Pengajuan Pendaftaran Ulang</a>';
                 } else {
                     statusEl.className =
                         'rounded-xl text-sm font-semibold text-center p-4 bg-green-100 text-green-700';
@@ -119,7 +119,7 @@
             <!-- Header -->
             <div class="text-center space-y-1">
                 <h1 class="text-2xl sm:text-3xl font-bold text-slate-800">
-                    Cek Peserta BPJS
+                    Cek Peserta Rentan BPJS Ketenagakerjaan
                 </h1>
                 <p class="text-sm sm:text-base text-slate-500">
                     Masukkan NIK untuk melihat data

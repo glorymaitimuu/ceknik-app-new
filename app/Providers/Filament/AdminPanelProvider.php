@@ -25,7 +25,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->brandName('BPJS TK TIMIKA')
+            ->brandLogo(asset('img/logo.png'))
+            ->brandLogoHeight('5rem')
             ->id('admin')
             ->path('admin')
             ->login()
