@@ -361,9 +361,13 @@
             const districtSelect = document.getElementById('kecamatan');
             const villageSelect = document.getElementById('kelurahan');
 
-            // 1. Fetch Kecamatan for Mimika (ID 94.04)
+            // 1. Fetch Kecamatan from Local Backend (Proxy)
             try {
-                const response = await fetch('https://wilayah.id/api/districts/94.04.json');
+                const response = await fetch('/api/wilayah/kecamatan', {
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                });
                 const data = await response.json();
 
                 data.data.forEach(district => {
@@ -388,8 +392,11 @@
 
                 if (districtId) {
                     try {
-                        const response = await fetch(
-                            `https://wilayah.id/api/villages/${districtId}.json`);
+                        const response = await fetch(`/api/wilayah/kelurahan/${districtId}`, {
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        });
                         const data = await response.json();
 
                         data.data.forEach(village => {
