@@ -342,7 +342,7 @@
         const inputElement = document.querySelector('#file_ktp');
         const pond = FilePond.create(inputElement, {
             labelIdle: 'Seret & letakkan file atau <span class="filepond--label-action">Telusuri</span>',
-            maxFileSize: '10MB',
+            maxFileSize: '15MB',
             acceptedFileTypes: ['image/png', 'image/jpeg'],
             imagePreviewHeight: 170,
             imageCropAspectRatio: '1:1',

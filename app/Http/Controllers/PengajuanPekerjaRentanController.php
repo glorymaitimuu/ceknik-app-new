@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PengajuanPesertaRentan;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Image\Image;
 
 class PengajuanPekerjaRentanController extends Controller
 {
@@ -41,7 +42,7 @@ class PengajuanPekerjaRentanController extends Controller
             'rt' => 'required|numeric|digits:3',
             'rw' => 'required|numeric|digits:3',
             'alamat' => 'required|string',
-            'file_ktp' => 'required|image|max:10240',
+            'file_ktp' => 'required|image|max:15360',
             'persetujuan_data' => 'accepted',
         ], [
             'required' => ':attribute wajib diisi.',
@@ -50,7 +51,7 @@ class PengajuanPekerjaRentanController extends Controller
             'unique' => ':attribute sudah terdaftar.',
             'date' => ':attribute bukan format tanggal yang valid.',
             'image' => ':attribute harus berupa gambar.',
-            'max' => ':attribute tidak boleh lebih dari :max kilobita.',
+            'max' => ':attribute tidak boleh lebih dari 15MB.',
             'persetujuan_data.accepted' => 'Anda harus menyetujui syarat dan ketentuan untuk melanjutkan.',
         ], [
             'nik' => 'NIK',
@@ -79,12 +80,15 @@ class PengajuanPekerjaRentanController extends Controller
         $data['waktu_persetujuan'] = now();
 
         if ($request->hasFile('file_ktp')) {
-            // Simpan di disk 'local' agar tidak bisa diakses publik secara langsung
             $path = $request->file('file_ktp')->store('uploads/ktp', 'local');
             $data['file_ktp'] = $path;
         }
 
-        PengajuanPesertaRentan::create($data);
+        $pengajuan = PengajuanPesertaRentan::create($data);
+
+        if ($request->hasFile('file_ktp')) {
+            \App\Jobs\OptimizeKtpImageJob::dispatch($pengajuan);
+        }
 
         return redirect()->back()->with('success', 'Pengajuan Anda telah kami terima! Data akan segera diproses oleh tim kami, dan Anda akan dihubungi melalui nomor telepon yang terdaftar untuk informasi lebih lanjut.');
     }
