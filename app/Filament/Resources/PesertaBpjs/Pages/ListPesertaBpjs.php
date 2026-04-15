@@ -17,7 +17,8 @@ class ListPesertaBpjs extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->label('Tambah Peserta Rentan'),
             Action::make('import')
             ->label('Import Excel')
             ->icon('heroicon-o-arrow-up-tray')

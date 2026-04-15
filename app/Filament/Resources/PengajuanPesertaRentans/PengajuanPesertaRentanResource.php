@@ -22,7 +22,7 @@ class PengajuanPesertaRentanResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedIdentification;
 
-    protected static ?string $navigationLabel = 'Pengajuan Peserta';
+    protected static ?string $navigationLabel = 'Pengajuan Peserta Rentan';
 
     protected static ?string $modelLabel = 'Pengajuan';
 
