@@ -249,7 +249,7 @@
                                         Detail
                                         Rumah</label>
                                     <textarea id="alamat" name="alamat" rows="2" placeholder="Masukkan nama jalan, nomor rumah, dsb"
-                                        class="w-full px-4 py-3 border rounded-xl focus:outline-none form-input-green transition @error('alamat') border-red-500 @enderror">{{ old('alamat') }}</textarea>
+                                        class="w-full px-4 py-3 border rounded-xl focus:outline-none form-input-green transition @error('alamat') border-red-500 @enderror" required>{{ old('alamat') }}</textarea>
                                     @error('alamat')
                                         <p class="text-red-500 text-xs mt-1 font-medium">{{ $message }}</p>
                                     @enderror
@@ -262,7 +262,7 @@
                             <h3 class="text-lg font-bold text-slate-800 border-b pb-2">Upload Dokumen</h3>
                             <div class="space-y-1">
                                 <label class="block text-sm font-semibold text-slate-600 mb-2">Foto KTP</label>
-                                <input type="file" id="file_ktp" name="file_ktp" accept="image/*" />
+                                <input type="file" id="file_ktp" name="file_ktp" accept="image/*" required />
                                 @error('file_ktp')
                                     <p class="text-red-500 text-xs mt-1 font-medium">{{ $message }}</p>
                                 @enderror
@@ -440,6 +440,7 @@
             styleButtonRemoveItemPosition: 'left bottom',
             styleButtonProcessItemPosition: 'right bottom',
             storeAsFile: true,
+            required: true,
         });
 
         // Territorial Fetching Logic

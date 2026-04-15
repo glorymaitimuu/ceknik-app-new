@@ -20,7 +20,11 @@ class PesertaBpjsResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Peserta BPJS';
+    protected static ?string $recordTitleAttribute = 'Data Pekerja Rentan';
+
+    protected static ?string $modelLabel = 'Data Pekerja Rentan';
+
+    protected static ?string $pluralModelLabel = 'Data Pekerja Rentan';
 
     public static function form(Schema $schema): Schema
     {
