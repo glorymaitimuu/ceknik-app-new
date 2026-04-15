@@ -24,13 +24,14 @@
 <body class="bg-white font-main min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="p-6 md:px-12 flex justify-between items-center bg-white shadow-sm">
-        <!-- Brand Logo -->
-        <div class="flex flex-col">
-            <h1 class="font-logo text-4xl text-[#F5C400] leading-tight tracking-wide">PORTAL</h1>
-            <p class="text-[10px] md:text-xs font-bold text-[#16A34A] tracking-[0.15em] -mt-1 uppercase">PEKERJA RENTAN
-                MIMIKA</p>
-            @if (!request()->is('/'))
+    @if (!request()->is('/') && !request()->is('cek-nik') && !request()->is('pengajuan'))
+        <header class="p-6 md:px-12 flex justify-between items-center bg-white shadow-sm">
+            <!-- Brand Logo -->
+            <div class="flex flex-col">
+                <h1 class="font-logo text-4xl text-[#F5C400] leading-tight tracking-wide">PORTAL</h1>
+                <p class="text-[10px] md:text-xs font-bold text-[#16A34A] tracking-[0.15em] -mt-1 uppercase">PEKERJA
+                    RENTAN
+                    MIMIKA</p>
                 <a href="/"
                     class="flex items-center gap-2 mt-4 text-gray-400 hover:text-gray-600 transition w-fit">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
@@ -40,21 +41,24 @@
                     </svg>
                     <span class="text-[18px] font-black uppercase tracking-widest">Kembali</span>
                 </a>
-            @endif
-        </div>
+            </div>
 
-        <!-- BPJS Logo -->
-        <div>
-            <img src="{{ asset('img/logo.png') }}" alt="BPJS Ketenagakerjaan Logo" class="h-16 md:h-24 object-contain">
-        </div>
-    </header>
+            <!-- BPJS Logo -->
+            <div>
+                <img src="{{ asset('img/logo.png') }}" alt="BPJS Ketenagakerjaan Logo"
+                    class="h-16 md:h-24 object-contain">
+            </div>
+        </header>
+    @endif
 
     @yield('content')
 
     <!-- Footer Decoration -->
-    <footer class="py-8 opacity-50 text-center text-xs text-gray-400">
-        &copy; 2024 BPJS Ketenagakerjaan Papua Mimika
-    </footer>
+    @if (!request()->is('/') && !request()->is('cek-nik') && !request()->is('pengajuan'))
+        <footer class="py-8 opacity-50 text-center text-xs text-gray-400">
+            &copy; 2024 BPJS Ketenagakerjaan Papua Mimika
+        </footer>
+    @endif
 
     @stack('script')
 </body>
