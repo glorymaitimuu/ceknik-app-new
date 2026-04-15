@@ -23,16 +23,10 @@
             <!-- Inner Header: Reproducing the desktop header style locally -->
             <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0 relative z-10">
                 <div class="flex flex-col">
-                    <h1
-                        class="font-logo text-3xl md:text-5xl text-[#F5C400] leading-tight tracking-[0.05em] drop-shadow-sm">
-                        PORTAL</h1>
-                    <p
-                        class="text-[9px] md:text-[13px] font-bold text-[#16A34A] tracking-[0.2em] -mt-1 uppercase drop-shadow-sm">
-                        PEKERJA RENTAN MIMIKA
-                    </p>
+                    <img src="{{ asset('img/logo_portal.png') }}" alt="Portal Logo" class="h-10 md:h-16 object-contain object-left">
                 </div>
                 <div class="flex items-center">
-                    <img src="{{ asset('img/logo.png') }}" alt="BPJS Logo" class="h-10 md:h-16 object-contain">
+                    <img src="{{ asset('img/logo.png') }}" alt="BPJS Logo" class="h-16 md:h-24 object-contain">
                 </div>
             </header>
 
