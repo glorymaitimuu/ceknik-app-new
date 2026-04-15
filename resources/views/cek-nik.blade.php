@@ -115,29 +115,37 @@
     <div class="flex flex-col md:flex-row min-h-screen w-full font-main">
         <!-- Left Section: Image Background -->
         <div class="hidden md:block md:w-1/2 bg-cover bg-center relative group overflow-hidden"
-            style="background-image: url('{{ asset('img/cek-peserta-bg.jpeg') }}');">
+            style="background-image: url('{{ asset('img/cek-peserta-bg.webp') }}');">
             <!-- Overlay transisi putih agar menyatu mulus dengan sisi kanan -->
             <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-white via-white/50 to-transparent"></div>
         </div>
 
         <!-- Mobile Section Hero Image -->
         <div class="md:hidden w-full h-56 bg-cover bg-center relative"
-            style="background-image: url('{{ asset('img/cek-peserta-bg.jpeg') }}');">
+            style="background-image: url('{{ asset('img/cek-peserta-bg.webp') }}');">
             <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
         </div>
 
         <!-- Right Section: Content -->
-        <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden max-h-screen">
+        <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden max-h-screen relative">
             <!-- Inner Header -->
-            <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0">
+            <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0 relative z-10">
                 <div class="flex flex-col">
-                    <h1 class="font-logo text-3xl md:text-5xl text-[#F5C400] leading-tight tracking-[0.05em] drop-shadow-sm">PORTAL</h1>
-                    <p class="text-[9px] md:text-[13px] font-bold text-[#16A34A] tracking-[0.2em] -mt-1 uppercase drop-shadow-sm">
+                    <h1
+                        class="font-logo text-3xl md:text-5xl text-[#F5C400] leading-tight tracking-[0.05em] drop-shadow-sm">
+                        PORTAL</h1>
+                    <p
+                        class="text-[9px] md:text-[13px] font-bold text-[#16A34A] tracking-[0.2em] -mt-1 uppercase drop-shadow-sm">
                         PEKERJA RENTAN MIMIKA
                     </p>
-                    <a href="/" class="flex items-center gap-1 md:gap-2 mt-4 text-gray-400 hover:text-green-600 transition w-fit group">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 transform group-hover:-translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                    <a href="/"
+                        class="flex items-center gap-1 md:gap-2 mt-4 text-gray-400 hover:text-green-600 transition w-fit group">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 md:h-6 md:w-6 transform group-hover:-translate-x-1 transition-transform"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                clip-rule="evenodd" />
                         </svg>
                         <span class="text-[12px] md:text-[14px] font-black uppercase tracking-widest">Kembali</span>
                     </a>
@@ -148,10 +156,12 @@
             </header>
 
             <!-- Main Body Content: The Form -->
-            <main class="flex-grow flex flex-col items-center justify-center px-6 py-4 overflow-y-auto animate-fade-in w-full">
+            <main
+                class="flex-grow flex flex-col items-center justify-center px-6 py-4 overflow-y-auto animate-fade-in w-full relative z-10">
                 <!-- CARD -->
-                <div class="w-full max-w-lg bg-white rounded-3xl shadow-2xl shadow-green-100/50 p-6 md:p-8 space-y-6 md:space-y-8 border border-green-50 mb-8">
-                    
+                <div
+                    class="w-full max-w-lg bg-white/95 backdrop-blur rounded-3xl shadow-2xl shadow-green-100/50 p-6 md:p-8 space-y-6 md:space-y-8 border border-green-50 mb-8">
+
                     <!-- Header -->
                     <div class="text-center space-y-2">
                         <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800 tracking-tight">
@@ -165,8 +175,10 @@
                     <!-- Input -->
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <svg class="h-6 w-6 text-green-500 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                            <svg class="h-6 w-6 text-green-500 opacity-60 group-hover:opacity-100 transition-opacity"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
                             </svg>
                         </div>
                         <input id="nik" type="text" maxlength="16" placeholder="Masukkan 16 Digit NIK"
@@ -181,8 +193,10 @@
                                hover:from-[#218838] hover:to-[#1c7430] hover:shadow-lg hover:shadow-green-300/50 hover:-translate-y-1 transition-all duration-300
                                active:scale-[0.98] flex justify-center items-center gap-2">
                         <span>Cari Data Kepesertaan</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
 
@@ -190,10 +204,13 @@
                     <p id="loading" class="text-center text-sm text-green-600 font-bold hidden animate-pulse">
                         Mohon tunggu, sedang memeriksa data...
                     </p>
-                    <div id="error" class="hidden text-center text-sm text-red-600 font-medium bg-red-50 p-4 rounded-xl border border-red-100 leading-relaxed"></div>
+                    <div id="error"
+                        class="hidden text-center text-sm text-red-600 font-medium bg-red-50 p-4 rounded-xl border border-red-100 leading-relaxed">
+                    </div>
 
                     <!-- RESULT -->
-                    <div id="result-card" class="hidden bg-slate-50 border border-slate-200 rounded-2xl p-5 md:p-7 space-y-6">
+                    <div id="result-card"
+                        class="hidden bg-slate-50 border border-slate-200 rounded-2xl p-5 md:p-7 space-y-6">
 
                         <h3 class="font-bold text-slate-800 text-lg md:text-xl text-center border-b border-slate-200 pb-4">
                             Detail Kepesertaan
@@ -222,7 +239,8 @@
                             </div>
                         </div>
 
-                        <div id="status" class="rounded-xl text-sm md:text-base font-semibold text-center p-4 shadow-sm border">
+                        <div id="status"
+                            class="rounded-xl text-sm md:text-base font-semibold text-center p-4 shadow-sm border">
                         </div>
                     </div>
 
@@ -230,22 +248,37 @@
             </main>
 
             <!-- Inner Footer: Copyright -->
-            <footer class="p-4 md:p-6 text-center text-[10px] md:text-xs text-gray-400 font-medium tracking-wide shrink-0">
-                <span class="px-4 md:px-6 py-2 border-t border-gray-100 italic block">
+            <footer
+                class="p-4 md:p-6 text-center text-[10px] md:text-xs text-gray-400 font-medium tracking-wide shrink-0 relative z-10">
+                <span
+                    class="px-4 md:px-6 py-2 border-t border-gray-100 italic block bg-white/50 backdrop-blur-sm rounded-full w-fit mx-auto">
                     &copy; {{ date('Y') }} BPJS Ketenagakerjaan Papua Mimika
                 </span>
             </footer>
+
+            <!-- Tribal Decoration -->
+            <div class="fixed bottom-0 right-0 pointer-events-none z-0">
+                <img src="{{ asset('img/tribal_bpjstk.png') }}" alt="Tribal Motif" class="w-48 md:w-80 object-contain">
+            </div>
         </div>
     </div>
-    
+
     <style>
         .animate-fade-in {
             opacity: 0;
             animation: fadeIn 0.8s ease-out forwards;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 @endsection
