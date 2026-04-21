@@ -45,11 +45,12 @@
 
 @section('content')
     <div class="flex flex-col md:flex-row min-h-screen w-full font-main">
-        <!-- Left Section: Image Background -->
-        <div class="hidden md:block md:w-1/2 bg-cover bg-center relative group overflow-hidden"
-            style="background-image: url('{{ asset('img/pengajuan-peserta-bg.webp') }}');">
-            <!-- Overlay transisi putih agar menyatu mulus dengan sisi kanan -->
-            <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-white via-white/50 to-transparent"></div>
+        <!-- Left Section: Logos -->
+        <div class="hidden md:flex md:w-1/2 bg-white relative items-center justify-center p-12">
+            <div class="absolute top-12 left-12">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-20 md:h-32 object-contain">
+            </div>
+            <img src="{{ asset('img/prima-logo.png') }}" alt="Prima Logo" class="w-full max-w-md md:max-w-lg object-contain animate-fade-in">
         </div>
 
         <!-- Mobile Section Hero Image -->
@@ -61,12 +62,16 @@
 
         <!-- Right Section: Content -->
         <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden max-h-screen relative">
+            <!-- Background Image with Opacity -->
+            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-right bg-no-repeat bg-cover"
+                style="background-image: url('{{ asset('img/pengajuan-peserta-bg.webp') }}');">
+            </div>
+            <!-- Inner Header -->
             <!-- Inner Header -->
             <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0 relative z-10">
                 <div class="flex flex-col">
-                    <img src="{{ asset('img/logo_portal.png') }}" alt="Portal Logo" class="h-10 md:h-16 object-contain object-left">
                     <a href="/"
-                        class="flex items-center gap-1 md:gap-2 mt-4 text-gray-400 hover:text-green-600 transition w-fit group">
+                        class="flex items-center gap-1 md:gap-2 text-gray-400 hover:text-green-600 transition w-fit group">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="h-5 w-5 md:h-6 md:w-6 transform group-hover:-translate-x-1 transition-transform"
                             viewBox="0 0 20 20" fill="currentColor">
@@ -76,9 +81,6 @@
                         </svg>
                         <span class="text-[12px] md:text-[14px] font-black uppercase tracking-widest">Kembali</span>
                     </a>
-                </div>
-                <div class="flex items-center">
-                    <img src="{{ asset('img/logo.png') }}" alt="BPJS Logo" class="h-16 md:h-24 object-contain">
                 </div>
             </header>
 

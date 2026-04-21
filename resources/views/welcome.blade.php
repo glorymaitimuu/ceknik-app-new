@@ -4,11 +4,13 @@
 
 @section('content')
     <div class="flex flex-col md:flex-row min-h-screen w-full font-main">
-        <!-- Left Section: Image Collage -->
-        <div class="hidden md:block md:w-1/2 bg-cover bg-center relative group overflow-hidden"
-            style="background-image: url('{{ asset('img/welcome-bg2.webp') }}');">
-            <!-- Overlay transisi putih agar menyatu mulus dengan sisi kanan -->
-            <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-white via-white/50 to-transparent"></div>
+        <!-- Left Section: Logos -->
+        <div class="hidden md:flex md:w-1/2 bg-white relative items-center justify-center p-12">
+            <div class="absolute top-12 left-12">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-20 md:h-32 object-contain">
+            </div>
+            <img src="{{ asset('img/prima-logo.png') }}" alt="Prima Logo"
+                class="w-full max-w-md md:max-w-lg object-contain animate-fade-in">
         </div>
 
         <!-- Mobile Section Hero Image -->
@@ -20,21 +22,20 @@
 
         <!-- Right Section: Content -->
         <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden max-h-screen relative">
-            <!-- Inner Header: Reproducing the desktop header style locally -->
-            <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0 relative z-10">
-                <div class="flex flex-col">
-                    <img src="{{ asset('img/logo_portal.png') }}" alt="Portal Logo" class="h-10 md:h-16 object-contain object-left">
-                </div>
-                <div class="flex items-center">
-                    <img src="{{ asset('img/logo.png') }}" alt="BPJS Logo" class="h-16 md:h-24 object-contain">
-                </div>
+            <!-- Background Image with Opacity -->
+            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-right bg-no-repeat bg-cover"
+                style="background-image: url('{{ asset('img/welcome-bg2.webp') }}');">
+            </div>
+            <!-- Inner Header: Spacing container -->
+            <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0 relative z-10 min-h-[80px]">
+                <!-- Logos removed as per request -->
             </header>
 
             <!-- Main Body Content -->
             <main
                 class="flex-grow flex flex-col items-center justify-center px-6 md:px-16 py-4 md:py-8 text-center max-w-2xl mx-auto w-full animate-fade-in overflow-y-auto relative z-10">
                 <div class="space-y-2 md:space-y-4 mb-6 md:mb-10 px-4">
-                    <h2 class="text-base md:text-xl font-bold text-gray-400 tracking-[0.2em] uppercase">Selamat Datang di
+                    <h2 class="text-base md:text-xl font-bold text-gray-700 tracking-[0.2em] uppercase">Selamat Datang di
                     </h2>
                     <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tighter">
                         Portal Pekerja Rentan<br>
