@@ -113,30 +113,39 @@
 
 @section('content')
     <div class="flex flex-col md:flex-row min-h-screen w-full font-main">
-        <!-- Left Section: Logos -->
-        <div class="hidden md:flex md:w-1/2 bg-white relative items-center justify-center p-12">
-            <div class="absolute top-12 left-12">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-20 md:h-32 object-contain">
+        <!-- Section: Branding (Top on Mobile, Left on Desktop) -->
+        <div class="flex flex-col md:w-1/2 bg-white relative items-center justify-center p-8 md:p-12 overflow-hidden min-h-[200px] md:min-h-screen">
+            <div class="absolute top-6 left-6">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-10 md:h-16 object-contain">
             </div>
-            <img src="{{ asset('img/prima-logo.png') }}" alt="Prima Logo" class="w-full max-w-md md:max-w-lg object-contain animate-fade-in">
+            
+            <div class="relative z-10 w-40 md:w-full md:max-w-lg animate-fade-in flex flex-col items-center">
+                <img src="{{ asset('img/prima-logo.png') }}" alt="Prima Logo" class="w-full object-contain">
+            </div>
+
+            <!-- Bottom Information (Desktop Only) -->
+            <div class="hidden md:block absolute bottom-0 inset-x-0 bg-gradient-to-r from-[#28a745] to-[#1e7e34] py-3 text-center z-20">
+                <span class="text-white text-[10px] md:text-xs font-semibold tracking-wide uppercase italic">
+                    &copy; {{ date('Y') }} BPJS Ketenagakerjaan Papua Mimika
+                </span>
+            </div>
+
+            <!-- Soft Vertical Split Blend (Desktop Only) -->
+            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-0"></div>
         </div>
 
-        <!-- Mobile Section Hero Image -->
-        <div class="md:hidden w-full h-56 bg-cover bg-center relative"
-            style="background-image: url('{{ asset('img/cek-peserta-bg.webp') }}');">
-            <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
-        </div>
+        <!-- Hero Section (Photo): Removed from separate div to fix desktop layout -->
 
         <!-- Right Section: Content -->
-        <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden max-h-screen relative">
+        <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden min-h-screen relative">
             <!-- Background Image with Opacity -->
             <div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-right bg-no-repeat bg-cover"
                 style="background-image: url('{{ asset('img/cek-peserta-bg.webp') }}');">
             </div>
             <!-- Inner Header -->
-            <!-- Inner Header -->
-            <header class="p-6 md:p-8 flex justify-between items-center w-full shrink-0 relative z-10">
-                <div class="flex flex-col">
+            <!-- Inner Header: Enhanced for Mobile -->
+            <header class="p-6 md:p-8 flex items-center justify-between w-full shrink-0 relative z-10 min-h-[80px]">
+                <div class="flex items-center gap-4">
                     <a href="/"
                         class="flex items-center gap-1 md:gap-2 text-gray-400 hover:text-green-600 transition w-fit group">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -149,6 +158,7 @@
                         <span class="text-[12px] md:text-[14px] font-black uppercase tracking-widest">Kembali</span>
                     </a>
                 </div>
+                <!-- Logos removed for mobile header as they are now on top of the page -->
             </header>
 
             <!-- Main Body Content: The Form -->
@@ -243,18 +253,20 @@
                 </div>
             </main>
 
-            <!-- Inner Footer: Copyright -->
-            <footer
-                class="p-4 md:p-6 text-center text-[10px] md:text-xs text-gray-400 font-medium tracking-wide shrink-0 relative z-10">
-                <span
-                    class="px-4 md:px-6 py-2 border-t border-gray-100 italic block bg-white/50 backdrop-blur-sm rounded-full w-fit mx-auto">
-                    &copy; {{ date('Y') }} BPJS Ketenagakerjaan Papua Mimika
-                </span>
-            </footer>
 
             <!-- Tribal Decoration -->
-            <div class="fixed bottom-0 right-0 pointer-events-none z-0">
-                <img src="{{ asset('img/tribal_bpjstk.png') }}" alt="Tribal Motif" class="w-48 md:w-80 object-contain">
+            <div class="absolute bottom-0 right-0 pointer-events-none z-0">
+                <img src="{{ asset('img/tribal_bpjstk.png') }}" alt="Tribal Motif" class="w-48 md:w-80 object-contain opacity-30 md:opacity-100">
+            </div>
+
+            <!-- Mobile Specific Footer (Hidden on Desktop) -->
+            <div class="md:hidden bg-gradient-to-r from-[#28a745] to-[#1e7e34] py-4 px-6 text-center z-10 mt-auto w-full">
+                <span class="text-white text-[10px] font-bold tracking-tight uppercase italic block">
+                    &copy; {{ date('Y') }} BPJS Ketenagakerjaan
+                </span>
+                <span class="text-white/80 text-[8px] uppercase tracking-widest mt-1 block">
+                    Papua Mimika
+                </span>
             </div>
         </div>
     </div>
