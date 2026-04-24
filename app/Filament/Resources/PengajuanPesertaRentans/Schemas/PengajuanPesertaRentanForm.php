@@ -45,6 +45,17 @@ class PengajuanPesertaRentanForm
                                 ->required()
                                 ->native(false)
                                 ->displayFormat('d M Y'),
+
+                            \Filament\Forms\Components\Select::make('pekerjaan_1')
+                                ->label('Pekerjaan Utama')
+                                ->options(\App\Models\Pekerjaan::all()->pluck('nama', 'nama'))
+                                ->required()
+                                ->searchable(),
+
+                            \Filament\Forms\Components\Select::make('pekerjaan_2')
+                                ->label('Pekerjaan Sampingan')
+                                ->options(\App\Models\Pekerjaan::all()->pluck('nama', 'nama'))
+                                ->searchable(),
                         ]),
                     ]),
 

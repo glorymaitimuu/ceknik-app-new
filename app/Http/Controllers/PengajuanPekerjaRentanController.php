@@ -10,7 +10,8 @@ use Spatie\Image\Image;
 class PengajuanPekerjaRentanController extends Controller
 {
     public function index() {
-        return view('pengajuan');
+        $pekerjaans = \App\Models\Pekerjaan::orderBy('nama')->get();
+        return view('pengajuan', compact('pekerjaans'));
     }
 
     public function store(Request $request)
@@ -41,6 +42,8 @@ class PengajuanPekerjaRentanController extends Controller
             'kode_kelurahan' => 'required',
             'rt' => 'required|numeric|digits:3',
             'rw' => 'required|numeric|digits:3',
+            'pekerjaan_1' => 'required|string',
+            'pekerjaan_2' => 'nullable|string',
             'alamat' => 'required|string',
             'file_ktp' => 'required|image|max:15360',
             'persetujuan_data' => 'accepted',
@@ -70,6 +73,8 @@ class PengajuanPekerjaRentanController extends Controller
             'kode_kelurahan' => 'Kode Kelurahan',
             'rt' => 'RT',
             'rw' => 'RW',
+            'pekerjaan_1' => 'Pekerjaan Utama',
+            'pekerjaan_2' => 'Pekerjaan Sampingan',
             'alamat' => 'Detail Alamat',
             'file_ktp' => 'Foto KTP',
             'persetujuan_data' => 'Persetujuan Data Pribadi',

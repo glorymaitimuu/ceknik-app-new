@@ -178,6 +178,39 @@
                                         <p class="text-red-500 text-xs mt-1 font-medium">{{ $message }}</p>
                                     @enderror
                                 </div>
+
+                                <div class="space-y-1">
+                                    <label for="pekerjaan_1" class="block text-sm font-semibold text-slate-600">Pekerjaan Utama</label>
+                                    <select id="pekerjaan_1" name="pekerjaan_1"
+                                        class="w-full px-4 py-3 border rounded-xl focus:outline-none form-input-green transition bg-white @error('pekerjaan_1') border-red-500 @enderror"
+                                        required>
+                                        <option value="">Pilih Pekerjaan</option>
+                                        @foreach ($pekerjaans as $p)
+                                            <option value="{{ $p->nama }}" {{ old('pekerjaan_1') == $p->nama ? 'selected' : '' }}>
+                                                {{ $p->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('pekerjaan_1')
+                                        <p class="text-red-500 text-xs mt-1 font-medium">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="pekerjaan_2" class="block text-sm font-semibold text-slate-600">Pekerjaan Sampingan (Opsional)</label>
+                                    <select id="pekerjaan_2" name="pekerjaan_2"
+                                        class="w-full px-4 py-3 border rounded-xl focus:outline-none form-input-green transition bg-white @error('pekerjaan_2') border-red-500 @enderror">
+                                        <option value="">Pilih Pekerjaan Sampingan</option>
+                                        @foreach ($pekerjaans as $p)
+                                            <option value="{{ $p->nama }}" {{ old('pekerjaan_2') == $p->nama ? 'selected' : '' }}>
+                                                {{ $p->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('pekerjaan_2')
+                                        <p class="text-red-500 text-xs mt-1 font-medium">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 

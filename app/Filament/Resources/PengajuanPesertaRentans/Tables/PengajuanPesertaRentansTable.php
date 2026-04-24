@@ -40,6 +40,14 @@ class PengajuanPesertaRentansTable
 
                 TextColumn::make('kelurahan')
                     ->label('Kelurahan'),
+                
+                TextColumn::make('pekerjaan_1')
+                    ->label('Pekerjaan Utama')
+                    ->toggleable(),
+
+                TextColumn::make('pekerjaan_2')
+                    ->label('Pekerjaan Sampingan')
+                    ->toggleable(),
 
                 IconColumn::make('persetujuan_data')
                     ->label('Persetujuan')

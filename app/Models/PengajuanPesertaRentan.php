@@ -25,6 +25,8 @@ class PengajuanPesertaRentan extends Model
         'kode_kelurahan',
         'rt',
         'rw',
+        'pekerjaan_1',
+        'pekerjaan_2',
         'alamat',
         'file_ktp',
         'persetujuan_data',
