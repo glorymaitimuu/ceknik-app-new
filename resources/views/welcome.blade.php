@@ -3,121 +3,203 @@
 @section('title', 'Beranda')
 
 @section('content')
-    <div class="flex flex-col md:flex-row min-h-screen w-full font-main">
-        <!-- Section: Branding (Top on Mobile, Left on Desktop) -->
-        <div
-            class="flex flex-col md:w-1/2 bg-white relative items-center justify-center p-8 md:p-12 overflow-hidden min-h-[200px] md:min-h-screen">
-            <div class="absolute top-6 left-6">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-10 md:h-16 object-contain">
+    <div class="relative min-h-screen w-full font-main overflow-hidden bg-white">
+        <!-- Main Background Image -->
+        <div class="absolute inset-0 z-0">
+            <!-- Image on the right -->
+            <div class="absolute inset-y-0 right-0 w-full md:w-[70%]">
+                <img src="{{ asset('img/welcome-bg2.webp') }}" alt="Background"
+                    class="w-full h-full object-cover object-center">
             </div>
-
-            <div class="relative z-10 w-40 md:w-full md:max-w-lg animate-fade-in flex flex-col items-center">
-                <img src="{{ asset('img/prima-logo.png') }}" alt="Prima Logo" class="w-full object-contain">
-            </div>
-
-            <!-- Bottom Information (Desktop Only) -->
-            <div
-                class="hidden md:block absolute bottom-0 inset-x-0 bg-gradient-to-r from-[#28a745] to-[#1e7e34] py-3 text-center z-20">
-                <span class="text-white text-[10px] md:text-xs font-semibold tracking-wide uppercase italic">
-                    &copy; {{ date('Y') }} BPJS Ketenagakerjaan Papua Mimika
-                </span>
-            </div>
-
-            <!-- Soft Vertical Split Blend (Desktop Only) -->
-            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-0"></div>
+            <!-- Solid White to Transparent Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-white from-[35%] to-transparent"></div>
         </div>
 
-        <!-- Right Section: Content -->
-        <div class="w-full md:w-1/2 flex flex-col bg-white overflow-hidden relative min-h-screen">
-            <!-- Background Image with Opacity -->
-            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-right bg-no-repeat bg-cover"
-                style="background-image: url('{{ asset('img/welcome-bg2.webp') }}');">
+        <!-- Header Logos -->
+        <header class="relative z-20 flex justify-between items-start p-2 md:p-4 mx-auto w-full">
+            <div class="flex items-center">
+                <img src="{{ asset('img/logo.png') }}" alt="BPJS Ketenagakerjaan" class="h-12 md:h-24 object-contain">
             </div>
 
-            <!-- Main Body Content -->
-            <main
-                class="flex-grow flex flex-col items-center justify-center px-6 md:px-16 py-4 md:py-8 text-center max-w-2xl mx-auto w-full animate-fade-in overflow-y-auto relative z-10">
-                <div class="space-y-2 md:space-y-4 mb-6 md:mb-10 px-4">
-                    <h2 class="text-base md:text-xl font-bold text-gray-700 tracking-[0.2em] uppercase">Selamat Datang di
-                    </h2>
-                    <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tighter">
-                        Portal Pekerja Rentan<br>
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#28a745] to-[#16A34A] drop-shadow-sm">BPJS
-                            Ketenagakerjaan</span>
-                        <br><span class="text-gray-900 md:text-4xl text-2xl">Papua Mimika</span>
-                    </h3>
+            <!-- Logo Box with Tagline -->
+            <div
+                class="flex items-center bg-white rounded-2xl md:rounded-3xl px-2 md:px-6 py-1 md:py-2 shadow-md border border-gray-100">
+                <img src="{{ asset('img/prima-logo.png') }}" alt="PRIMA" class="h-8 md:h-20 object-contain pr-4">
+                <div class="h-8 md:h-12 w-[1px] bg-gray-200 mx-1 md:mx-4"></div>
+                <div class="flex items-center gap-3 md:gap-4">
+                    <div class="text-yellow-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-8 md:w-8" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                    </div>
+                    <img src="{{ asset('img/ornamen1.png') }}" alt="Ornamen" class="h-8 md:h-16 object-contain">
                 </div>
+            </div>
+        </header>
 
-                <!-- Action Buttons Container -->
-                <div class="w-full space-y-4 md:space-y-6 px-4">
-                    <!-- Button 1: Cek Kepesertaan -->
-                    <a href="/cek-nik"
-                        class="group flex items-center bg-gradient-to-br from-[#28a745] to-[#1e7e34] hover:from-[#218838] hover:to-[#1c7430] text-white rounded-[2rem] p-4 md:p-6 transition-all duration-500 shadow-xl shadow-green-200/50 hover:shadow-2xl hover:shadow-green-300/50 hover:-translate-y-1 active:scale-95 border border-white/20">
-                        <div
-                            class="bg-white/20 p-3 md:p-4 rounded-full mr-4 md:mr-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-10 md:w-10" fill="none"
+        <!-- Main Content Area -->
+        <main class="relative z-20 flex flex-col items-start px-12 md:px-20 pt-12 md:pt-4 mx-auto w-full">
+            <!-- Welcome Label -->
+            <div class="flex items-center gap-2 mb-2 md:mb-4">
+                <div class="text-yellow-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </div>
+                <h2 class="text-[10px] md:text-sm font-black text-[#009245] tracking-[0.2em] uppercase">Selamat Datang di
+                </h2>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="font-poppins text-4xl md:text-6xl font-black text-[#004a2f] leading-[0.9] mb-2 tracking-tight">
+                Portal<br><span class="text-[#009245]">Pekerja Rentan</span>
+            </h1>
+            <h3 class="font-poppins text-xl md:text-3xl font-bold text-[#004a2f] mb-1">
+                BPJS Ketenagakerjaan
+            </h3>
+            <p class="font-poppins text-lg md:text-2xl text-gray-500 font-medium mb-3">Papua Mimika</p>
+            <div class="flex items-center mb-6">
+                <div class="h-1.5 w-12 md:w-16 bg-[#009245] rounded-l-full"></div>
+                <div class="h-1.5 w-6 md:w-8 bg-[#c4d600] rounded-r-full"></div>
+            </div>
+
+            <!-- Description -->
+            <p class="max-w-md text-gray-600 text-sm md:text-base leading-relaxed mb-4 font-medium">
+                Layanan digital untuk kemudahan akses informasi kepesertaan dan pengajuan data pekerja rentan di Kabupaten
+                Mimika.
+            </p>
+
+            <!-- Buttons Area -->
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-12 md:mb-16 w-full md:w-auto">
+                <!-- Button 1: Cek Kepesertaan -->
+                <a href="/cek-nik"
+                    class="group flex items-center justify-between bg-[#009245] hover:bg-[#006837] text-white rounded-xl md:rounded-2xl p-1.5 md:p-2 transition-all duration-300 shadow-xl w-full md:w-[320px]">
+                    <div class="flex items-center gap-3 md:gap-4">
+                        <div class="bg-white p-2 md:p-3 rounded-full text-[#009245] shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
-                        <span class="text-lg md:text-2xl font-extrabold tracking-tight text-left leading-tight">Cek
-                            Kepesertaan<br>Pekerja Rentan</span>
-                    </a>
+                        <span class="text-sm md:text-xl font-black tracking-tight">Cek Kepesertaan</span>
+                    </div>
+                    <div
+                        class="bg-white p-1 md:p-1.5 rounded-full text-[#009245] group-hover:translate-x-1 transition-transform mr-1 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-5 md:w-5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
 
-                    <!-- Button 2: Pengajuan Data -->
-                    <a href="/pengajuan"
-                        class="group flex items-center bg-gradient-to-br from-[#28a745] to-[#1e7e34] hover:from-[#218838] hover:to-[#1c7430] text-white rounded-[2rem] p-4 md:p-6 transition-all duration-500 shadow-xl shadow-green-200/50 hover:shadow-2xl hover:shadow-green-300/50 hover:-translate-y-1 active:scale-95 border border-white/20">
-                        <div
-                            class="bg-white/20 p-3 md:p-4 rounded-full mr-4 md:mr-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-10 md:w-10" fill="none"
+                <!-- Button 2: Ajukan Data -->
+                <a href="/pengajuan"
+                    class="group flex items-center justify-between bg-white border-[2px] border-[#009245] text-[#006837] hover:bg-green-50 rounded-xl md:rounded-2xl p-1.5 md:p-2 transition-all duration-300 shadow-xl w-full md:w-[320px]">
+                    <div class="flex items-center gap-3 md:gap-4">
+                        <div class="border-[1.5px] border-[#009245]/20 p-2 md:p-3 rounded-full text-[#009245]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
                         </div>
-                        <span class="text-lg md:text-2xl font-extrabold tracking-tight text-left leading-tight">Pengajuan
-                            Data<br>Pekerja Rentan</span>
-                    </a>
+                        <span class="text-sm md:text-xl font-black tracking-tight text-[#004a2f]">Ajukan Data</span>
+                    </div>
+                    <div
+                        class="border-[1.5px] border-[#009245]/20 rounded-full p-1 md:p-1.5 text-gray-400 group-hover:translate-x-1 transition-transform mr-1 group-hover:text-[#009245]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-5 md:w-5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Info Cards Section -->
+            <div
+                class="md:w-[75%] bg-white rounded-2xl md:rounded-[2rem] shadow-xl p-4 md:p-8 md:py-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 border border-gray-100 relative z-10">
+                <!-- Card 1 -->
+                <div class="flex items-center gap-3 md:px-6 md:border-r border-gray-100">
+                    <div class="bg-[#f0f9f4] p-2 md:p-5 rounded-full text-[#009245] shadow-inner shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-10 md:w-10" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-xs md:text-xl font-bold text-[#1e293b] leading-tight mb-0.5">Aman & Terpercaya</h4>
+                        <p class="text-[9px] md:text-sm text-[#64748b] font-medium leading-tight">Data anda terlindungi
+                            sesuai standar keamanan BPJS Ketenagakerjaan.</p>
+                    </div>
                 </div>
-            </main>
 
+                <!-- Card 2 -->
+                <div class="flex items-center gap-3 md:px-6 md:border-r border-gray-100">
+                    <div class="bg-[#f0f9f4] p-2 md:p-5 rounded-full text-[#009245] shadow-inner shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-10 md:w-10" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                            <path d="M2 12h3M19 12h3M12 2v3M12 19v3"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-xs md:text-xl font-bold text-[#1e293b] leading-tight mb-0.5">Cepat & Mudah</h4>
+                        <p class="text-[9px] md:text-sm text-[#64748b] font-medium leading-tight">Proses cepat, praktis dan
+                            bisa diakses kapan saja.</p>
+                    </div>
+                </div>
 
-            <!-- Tribal Decoration -->
-            <div class="fixed bottom-0 right-0 pointer-events-none z-0">
-                <img src="{{ asset('img/tribal_bpjstk.png') }}" alt="Tribal Motif"
-                    class="w-48 md:w-80 object-contain opacity-30 md:opacity-100">
+                <!-- Card 3 -->
+                <div class="flex items-center gap-3 md:px-6">
+                    <div class="bg-[#f0f9f4] p-2 md:p-5 rounded-full text-[#009245] shadow-inner shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-10 md:w-10" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-xs md:text-xl font-bold text-[#1e293b] leading-tight mb-0.5">Untuk Semua</h4>
+                        <p class="text-[9px] md:text-sm text-[#64748b] font-medium leading-tight">Didedikasikan untuk
+                            Pekerja Rentan di seluruh Kabupaten Mimika.</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Mobile Specific Footer (Hidden on Desktop) -->
-            <div class="md:hidden bg-gradient-to-r from-[#28a745] to-[#1e7e34] py-4 px-6 text-center z-10 mt-auto">
-                <span class="text-white text-[10px] font-bold tracking-tight uppercase italic block">
-                    &copy; {{ date('Y') }} BPJS Ketenagakerjaan
-                </span>
-                <span class="text-white/80 text-[8px] uppercase tracking-widest mt-1 block">
-                    Papua Mimika
-                </span>
+            <div class="mt-8 flex items-center justify-center gap-2 text-slate-400 bg-white/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none px-3 py-1.5 md:p-0 rounded-full md:rounded-none shadow-sm md:shadow-none border border-gray-100 md:border-none z-10 relative">
+                <span class="text-[9px] md:text-[12px] font-black uppercase tracking-widest whitespace-nowrap">© 2026 BPJS Ketenagakerjaan Papua Mimika</span>
             </div>
+        </main>
+
+        <!-- Graphic Element in bottom right -->
+        <div class="absolute bottom-0 right-0 z-0 pointer-events-none max-w-[400px]">
+            <img src="{{ asset('img/tribal_bpjstk.png') }}" alt="Tribal" class="w-full object-contain">
         </div>
     </div>
-
-    <style>
-        .animate-fade-in {
-            opacity: 0;
-            animation: fadeIn 1.2s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 @endsection

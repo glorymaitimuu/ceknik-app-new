@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portal Pekerja Rentan Mimika - @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&family=Poppins:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         .font-logo {
@@ -16,6 +16,10 @@
 
         .font-main {
             font-family: 'Outfit', sans-serif;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
         }
     </style>
     @stack('style')
